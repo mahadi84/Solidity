@@ -1,6 +1,5 @@
 
 
-**Gas = refers to the fee required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform.
 
 
 
@@ -9,7 +8,22 @@ Local Variables − Variables whose values are present till function is executin
 Global Variables − Special variables exists in the global namespace used to get information about the blockchain.
 
 
+**Gas = refers to the fee required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform.
 
+Hash of the given block(only works for 256 most recent, excluding current, blocks)  = blockhash(uint blockNumber) returns (bytes32)	
+Current block miner's address                          = block.coinbase (address payable)	
+Current block difficulty                               = block.difficulty (uint)	
+Current block gaslimit                                 = block.gaslimit (uint)	
+Current block number                                   = block.number (uint)	
+Current block timestamp as seconds since unix epoch    = block.timestamp (uint)	
+Remaining gas                                          = gasleft() returns (uint256)	
+Complete calldata                                      = msg.data (bytes calldata)	
+Sender of the message (current caller)                 = msg.sender (address payable)	
+First four bytes of the calldata (function identifier) = msg.sig (bytes4)	
+Number of wei sent with the message                    = msg.value (uint)	
+Current block timestamp                                = now (uint)	
+Gas price of the transaction                           = tx.gasprice (uint)	
+Sender of the transaction                              = tx.origin (address payable)	
 
 
 
