@@ -46,7 +46,15 @@ Gas price of the transaction                           = tx.gasprice (uint)
 Sender of the transaction                              = tx.origin (address payable)	
 
 
+============================================== UNITs ================================================
+In solidity we can use wei, finney, szabo or ether as a suffix to a literal to be used to convert various ether based denominations. 
+Lowest unit is wei and 1e12 represents 1 x 1012.
 
+assert(1 wei == 1);
+assert(1 szabo == 1e12);
+assert(1 finney == 1e15);
+assert(1 ether == 1e18);
+assert(2 ether == 2000 fenny);
 
 
 
