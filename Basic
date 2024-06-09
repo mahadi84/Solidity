@@ -1,0 +1,18 @@
+
+
+**Gas = refers to the fee required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform.
+
+
+
+State Variables − Variables whose values are permanently stored in a contract storage.
+Local Variables − Variables whose values are present till function is executing.
+Global Variables − Special variables exists in the global namespace used to get information about the blockchain.
+
+
+
+
+
+
+
+
+
