@@ -2,12 +2,32 @@
 
 
 
-
+======================================= VERIABLE =================================
 State Variables − Variables whose values are permanently stored in a contract storage.
 Local Variables − Variables whose values are present till function is executing.
 Global Variables − Special variables exists in the global namespace used to get information about the blockchain.
 
 
+================================== STATE AND LOCAL VERIABLE =========================================
+
+pragma solidity ^0.5.0;
+contract SolidityTest {
+   uint storedData; // State variable
+   constructor() public {
+      storedData = 10;   
+   }
+   function getResult() public view returns(uint){
+      uint a = 1; // local variable
+      uint b = 2;
+      uint result = a + b;
+      return storedData; //access the state variable
+   }
+}
+
+
+
+
+================================== GLOBAL VERIABLE =========================================
 **Gas = fee (required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform).
 
 Hash of the given block(only works for 256 most recent, excluding current, blocks)  = blockhash(uint blockNumber) returns (bytes32)	
