@@ -8,7 +8,7 @@ Local Variables − Variables whose values are present till function is executin
 Global Variables − Special variables exists in the global namespace used to get information about the blockchain.
 
 
-**Gas = refers to the fee required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform.
+**Gas = fee (required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform).
 
 Hash of the given block(only works for 256 most recent, excluding current, blocks)  = blockhash(uint blockNumber) returns (bytes32)	
 Current block miner's address                          = block.coinbase (address payable)	
