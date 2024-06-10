@@ -1,0 +1,26 @@
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
+
+contract BismillahContracts {  
+
+//   string public text;
+//   constructor(string memory _text){
+//         text= _text;
+
+//   }
+
+//  int public val=10;
+//  function addVal() public{ val +=1; }
+//  function delVal() public{ val -=1; }
+
+ int public vall;
+ 
+ function checkTotalNFT() public view returns(int){
+  return vall;
+ }
+ function addVal() public{ vall +=1; }
+ function delVal() public{ vall -=1; }
+
+}
