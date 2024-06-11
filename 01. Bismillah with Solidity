@@ -16,15 +16,17 @@ contract BismillahContracts {
 //  function addVal() public{ val +=1; }
 //  function delVal() public{ val -=1; }
 
- int public vall;
+ int public val;
  
  function checkTotalNFT() public view returns(int){
-  return vall;
+  return val;
  }
- function addVal() public{ vall +=1; }
- function delVal() public{ vall -=1; }
+ function addVal() public{ val +=1; }
+ function delVal() public{ val -=1; }
 
 }
+
+
 
 
 
