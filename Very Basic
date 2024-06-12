@@ -3,7 +3,7 @@
 
 01. How many Data Types are there in Solidity? What are the differences among them?
 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored?
-03. What is Visuality/Scope: Private and Public?
+03. What is Visibility Private, Public and Internal?
 04. What is Array and how it works? how to define Array Push?
 05. How does IF...ELSE statement work? How to define a Tenary operator?
 06. Loop: a) WHILE, DO..WHILE and FOR
@@ -33,8 +33,14 @@ Local Variables − Variables whose values are present till function is executin
 Global Variables − Special variables exists in the global namespace used to get information about the 
 
 
-=================== 03. What is Visuality/Scope: Private and Public? =============================
-=================== 04. What is Array and how it works? how to define Array Push? =============================
+=================== 03. What is Visibility Private, Public and Internal? ==========================================
+Public: Public variables are accessible both within the contract and from external contracts. Solidity automatically generates a getter function for public state variables.
+Private: Private variables are only accessible within the contract where they are defined. They remain hidden from derived contracts or external contracts.
+Internal: Internal variables are accessible within the contract where they are defined and also from derived contracts. However, they are not accessible from external contracts.
+External: External functions can only be called externally (from outside the contract). They cannot be accessed within the contract itself.
+
+=================== 04. What is Array and how it work? how to define Array Push? =============================
+
 =================== 05. How does IF...ELSE statement work? How to define a Tenary operator? =============================
 =================== 06. Loop: a) WHILE, DO..WHILE and FOR =============================
 =================== 07. How to define CONSTRUCT() ==========================================================
