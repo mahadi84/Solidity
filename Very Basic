@@ -1,0 +1,29 @@
+
+
+
+01. How many Data Types are there in Solidity? What are the differences among them?
+02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored?
+03. What is Visuality/Scope: Private and Public?
+04. What is Array and how it works? how to define Array Push?
+05. How does IF...ELSE statement work? How to define a Tenary operator?
+06. Loop: a) WHILE, DO..WHILE and FOR
+07. How to define CONSTRUCT() 
+08. How to return multiple values?
+
+09. Difference among Required, Revert, and Assert?
+
+10. How to receive data from FORM and VALIDATE it?
+
+
+=================== 01. How many Data Types are there in Solidity? What are the differences among them? =============================
+  int=
+
+=================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
+=================== 03. What is Visuality/Scope: Private and Public? =============================
+=================== 04. What is Array and how it works? how to define Array Push? =============================
+=================== 05. How does IF...ELSE statement work? How to define a Tenary operator? =============================
+=================== 06. Loop: a) WHILE, DO..WHILE and FOR =============================
+=================== 07. How to define CONSTRUCT() ==========================================================
+=================== 08. How to return multiple values? =============================
+=================== 09. Difference among Required, Revert, and Assert? =============================
+=================== 10. How to receive data from FORM and VALIDATE it? =============================
