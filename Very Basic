@@ -1,15 +1,16 @@
-
+Date: 11 June 2024
 
 
 01. How many Data Types are there in Solidity? What are the differences among them?
 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored?
 03. What is Visibility Private, Public and Internal?
+
 04. What is Array and how it works? how to define Array Push?
 05. How does IF...ELSE statement work? How to define a Tenary operator?
 06. Loop: FOR
+
 07. How to define CONSTRUCT() 
 08. How to return multiple values?
-
 09. Difference among Required, Revert, and Assert?
 
 10. Difference between views and pure in solidity??
