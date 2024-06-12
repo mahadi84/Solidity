@@ -12,7 +12,7 @@
 
 09. Difference among Required, Revert, and Assert?
 
-10. How to receive data from FORM and VALIDATE it?
+10. Difference between views and pure in solidity??
 
 
 =================== 01. How many Data Types are there in Solidity? What are the differences among them? =============================
@@ -104,5 +104,20 @@ contract StructReturnExample {
         return (person.name, person.age);
     }
 =================== 09. Difference among Required, Revert, and Assert? =============================
+require: Use for validating user inputs and conditions that should be met before executing the function logic. It's appropriate for handling expected conditions and user errors.
+            function transfer(address recipient, uint amount) public { require(balance[msg.sender] >= amount, "Insufficient balance");}
 
-=================== 10. How to receive data from FORM and VALIDATE it? =============================
+revert: Use for more complex conditional logic and to centralize error handling. It's useful when you need to return custom error messages from within different parts of your function.
+        if (balance[msg.sender] < amount) {  revert("Insufficient balance"); }
+
+assert: Use to ensure that your code behaves as expected and to catch internal errors. It should only be used for invariants and conditions that should never be false, as it indicates a bug if it fails.
+
+=================== 10. Difference between views and pure Function in solidity? =============================
+View function:  indicates that the function does not modify the state, but it can read from the state.
+Pure Functions: A pure function indicates that the function does not read from or modify the state. It can only use the parameters provided to it and perform operations on them.
+
+
+
+
+--
+
