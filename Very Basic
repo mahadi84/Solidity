@@ -16,7 +16,16 @@
 
 
 =================== 01. How many Data Types are there in Solidity? What are the differences among them? =============================
-  int=
+
+bool              -Boolean		true/false
+int/uint          -Integer		Signed and unsigned integers of varying sizes.
+int8 to int256    -Integer		Signed int from 8 bits to 256 bits. int256 is the same as int.
+uint8 to uint256  -Integer		Unsigned int from 8 bits to 256 bits. uint256 is the same as uint.
+fixed/unfixed     -Fixed Point Numbers		Signed and unsigned fixed point numbers of varying sizes.
+fixed/unfixed     -Fixed Point Numbers		Signed and unsigned fixed point numbers of varying sizes.
+fixedMxN          -Fixed Point Numbers		Signed fixed point number where M represents number of bits taken by type and N represents the 
+address           -address holds the 20 byte value representing the size of an Ethereum address. An address can be used to get the balance using .balance method and can be used to transfer balance to another address using .transfer method.
+
 
 =================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
 =================== 03. What is Visuality/Scope: Private and Public? =============================
