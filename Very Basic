@@ -6,7 +6,7 @@
 03. What is Visibility Private, Public and Internal?
 04. What is Array and how it works? how to define Array Push?
 05. How does IF...ELSE statement work? How to define a Tenary operator?
-06. Loop: a) WHILE, DO..WHILE and FOR
+06. Loop: FOR
 07. How to define CONSTRUCT() 
 08. How to return multiple values?
 
@@ -40,10 +40,69 @@ Internal: Internal variables are accessible within the contract where they are d
 External: External functions can only be called externally (from outside the contract). They cannot be accessed within the contract itself.
 
 =================== 04. What is Array and how it work? how to define Array Push? =============================
+Fixed-size arrays: Declared with a specific size.
+uint[5] fixedArray;  // An array of 5 unsigned integers
+
+Dynamic arrays: Declared without a specific size.
+uint[] dynamicArray;  // A dynamic array of unsigned integers
+dynamicArray.push(1);  // Adds 1 to the array
+dynamicArray.push(2);  // Adds 2 to the array
+
+
+
 
 =================== 05. How does IF...ELSE statement work? How to define a Tenary operator? =============================
-=================== 06. Loop: a) WHILE, DO..WHILE and FOR =============================
+contract IfElseExample {
+    function checkValue(uint value) public pure returns (string memory) {
+        if (value < 10) {
+            return "Value is less than 10";
+        } else if (value == 10) {
+            return "Value is 10";
+        } else {
+            return "Value is greater than 10";
+        }
+    }
+}
+---
+contract TernaryOperatorExample {
+    function getValue(uint value) public pure returns (string memory) {
+        return value < 10 ? "Less than 10" : "10 or greater";
+    }
+}
+=================== 06. FOR Loop =============================
+contract ForLoopExample {
+    function sumOfNumbers(uint n) public pure returns (uint) {
+        uint sum = 0;
+        for (uint i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+}
+
 =================== 07. How to define CONSTRUCT() ==========================================================
-=================== 08. How to return multiple values? =============================
+contract Token {
+    string public name; // State variables
+    constructor(string memory _name) {
+        name = _name;
+    }
+}
+=================== 08. How to return multiple values? ============================================
+contract StructReturnExample {
+
+    struct Person {     // Define a struct
+        string name;
+        uint age;
+    }
+
+    function getPerson() public pure returns (Person memory) {     // Function that returns a struct
+        return Person("Alice", 30);
+    }
+
+    function useReturnedStruct() public pure returns (string memory, uint) {      // Function that uses the returned struct
+        Person memory person = getPerson();
+        return (person.name, person.age);
+    }
 =================== 09. Difference among Required, Revert, and Assert? =============================
+
 =================== 10. How to receive data from FORM and VALIDATE it? =============================
