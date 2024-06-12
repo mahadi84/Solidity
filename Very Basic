@@ -28,6 +28,11 @@ address           -address holds the 20 byte value representing the size of an E
 
 
 =================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
+State Variables − Variables whose values are permanently stored in a contract storage.
+Local Variables − Variables whose values are present till function is executing.
+Global Variables − Special variables exists in the global namespace used to get information about the 
+
+
 =================== 03. What is Visuality/Scope: Private and Public? =============================
 =================== 04. What is Array and how it works? how to define Array Push? =============================
 =================== 05. How does IF...ELSE statement work? How to define a Tenary operator? =============================
