@@ -117,8 +117,17 @@ contract StructReturnExample {
         return (person.name, person.age);
     }
 =================== 09. Difference among Required, Revert, and Assert? =============================
-Require: Used for validating inputs, conditions, and external calls.
-            uint public value;
+Require Function: Enforces conditions that must be true for the function to proceed.
+    Behavior:
+    If the condition is true, the function continues execution.
+    If the condition is false, the transaction is reverted. This means any state changes made within the function are undone, and the user gets refunded for the gas used up to that point.
+    Provides an error message for debugging purposes.
+    Use Cases:
+    Input validation (e.g., ensuring positive values)
+    Enforcing state invariants (e.g., user balance check before transfer)
+    Access control checks (e.g., verifying sender address)
+            Example:
+               uint public value;
               function setValue(uint _newValue) public {
                 // Enforce that the new value is greater than 0
                 require(_newValue > 0, "New value must be greater than 0");
