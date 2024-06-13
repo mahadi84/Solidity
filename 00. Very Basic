@@ -21,20 +21,19 @@ Date: 11 June 2024
 VALUE TYPES:  
 store their data directly in the memory they own.expand_more This means that whenever a value type variable is used in a function argument or assignment, a copy of the variable is created.expand_more There are eight basic value types in Solidity:
 
-int           -Signed integers: These can store both positive and negative whole numbers.expand_more
-unit          -Unsigned integers: These can only store non-negative whole numbers.
-bool          -Booleans : These can only be true or false.
-address       -Addresses: These represent a 20-byte Ethereum address.expand_more
-bytes         -Byte arrays: These store a raw sequence of bytes.
-fixed/ufixed  -Fixed-point numbers : These are used for decimal values with a limited precision.
+int           -Signed integers: These can store both positive and negative whole numbers.
+unit          -Unsigned integers: These can only store non-negative whole numbers(including 0) (e.g., uint8, uint256) .
+               -uint256 can hold values between 0 and (2^256 - 1),  which is a very large number (approximately 1.1579 x 10^77 in decimal).
+bool          -These can only be true or false (e.g., 0 or 1).
+address       -These represent a 20-byte Ethereum address.
+bytes         -Fixed or dynamically sized byte arrays to store raw binary data.
+enum          -user-defined types that consist of a set of named constant values.
 
-Enums         -These are user-defined types that consist of a set of named constant values.
-Literal types: These represent specific literal values, like numbers or strings.exclamation
 
 REFERENCE TYPES:
 store data in a separate location in memory and use a reference (like a pointer) to access that data. This means that multiple variables can refer to the same data location.expand_more Reference types in Solidity include:
 
-Arrays: These are ordered collections of elements of the same data type.expand_more
+Arrays: These are ordered collections of elements of the same data type.
 Strings: These are similar to byte arrays but represent UTF-8 encoded text.exclamation
 Structs: These are user-defined types that group together variables of different types.
 Mappings: These are key-value pairs where the key can be of any data type (except for mappings) and the value can be of any data type.
