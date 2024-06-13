@@ -118,7 +118,12 @@ contract StructReturnExample {
     }
 =================== 09. Difference among Required, Revert, and Assert? =============================
 Require: Used for validating inputs, conditions, and external calls.
-            function transfer(address recipient, uint amount) public { require(balance[msg.sender] >= amount, "Insufficient balance");}
+            uint public value;
+              function setValue(uint _newValue) public {
+                // Enforce that the new value is greater than 0
+                require(_newValue > 0, "New value must be greater than 0");
+                value = _newValue;
+              }
 
 Revert: Can be used for general-purpose error handling.
         if (balance[msg.sender] < amount) {  revert("Insufficient balance"); }
