@@ -18,15 +18,27 @@ Date: 11 June 2024
 
 =================== 01. How many Data Types are there in Solidity? What are the differences among them? =============================
 
-bool              -Boolean		true/false
-int/uint          -Integer		Signed and unsigned integers of varying sizes.
-int8 to int256    -Integer		Signed int from 8 bits to 256 bits. int256 is the same as int.
-uint8 to uint256  -Integer		Unsigned int from 8 bits to 256 bits. uint256 is the same as uint.
-fixed/unfixed     -Fixed Point Numbers		Signed and unsigned fixed point numbers of varying sizes.
-fixed/unfixed     -Fixed Point Numbers		Signed and unsigned fixed point numbers of varying sizes.
-fixedMxN          -Fixed Point Numbers		Signed fixed point number where M represents number of bits taken by type and N represents the 
-address           -address holds the 20 byte value representing the size of an Ethereum address. An address can be used to get the balance using .balance method and can be used to transfer balance to another address using .transfer method.
+VALUE TYPES:  
+store their data directly in the memory they own.expand_more This means that whenever a value type variable is used in a function argument or assignment, a copy of the variable is created.expand_more There are eight basic value types in Solidity:
 
+int           -Signed integers: These can store both positive and negative whole numbers.expand_more
+unit          -Unsigned integers: These can only store non-negative whole numbers.
+bool          -Booleans : These can only be true or false.
+address       -Addresses: These represent a 20-byte Ethereum address.expand_more
+bytes         -Byte arrays: These store a raw sequence of bytes.
+fixed/ufixed  -Fixed-point numbers : These are used for decimal values with a limited precision.
+
+Enums         -These are user-defined types that consist of a set of named constant values.
+Literal types: These represent specific literal values, like numbers or strings.exclamation
+
+REFERENCE TYPES:
+store data in a separate location in memory and use a reference (like a pointer) to access that data. This means that multiple variables can refer to the same data location.expand_more Reference types in Solidity include:
+
+Arrays: These are ordered collections of elements of the same data type.expand_more
+Strings: These are similar to byte arrays but represent UTF-8 encoded text.exclamation
+Structs: These are user-defined types that group together variables of different types.
+Mappings: These are key-value pairs where the key can be of any data type (except for mappings) and the value can be of any data type.
+Contract types: These refer to other Solidity contracts.
 
 =================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
 State Variables − Variables whose values are permanently stored in a contract storage.
