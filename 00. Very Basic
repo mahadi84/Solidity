@@ -21,11 +21,13 @@ Date: 11 June 2024
 VALUE TYPES:  
 store their data directly in the memory they own.expand_more This means that whenever a value type variable is used in a function argument or assignment, a copy of the variable is created.expand_more There are eight basic value types in Solidity:
 
-int           -Signed integers: These can store both positive and negative whole numbers.
+int           -Signed integers: These can store both positive and negative whole numbers.(e.g., int8, int256)
+                int256 store	32bytes of data and  Range	-2^255 to 2^255-1.
 unit          -Unsigned integers: These can only store non-negative whole numbers(including 0) (e.g., uint8, uint256) .
                -uint256 can hold values between 0 and (2^256 - 1),  which is a very large number (approximately 1.1579 x 10^77 in decimal).
 bool          -These can only be true or false (e.g., 0 or 1).
-address       -These represent a 20-byte Ethereum address.
+address       -These represent a 20-byte Ethereum address.(use to Sending and Receiving Ether, Interacting with Other Contracts, Storing Account Information)
+                -Addresses are case-sensitive (e.g., 0xAbCdEf1234567890AbCdEf1234567890 is different from 0xabcdEf1234567890aBcDeF1234567890).
 bytes         -Fixed or dynamically sized byte arrays to store raw binary data.
 enum          -user-defined types that consist of a set of named constant values.
 
