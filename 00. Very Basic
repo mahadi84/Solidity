@@ -59,6 +59,7 @@ uint[5] fixedArray;  // An array of 5 unsigned integers
 
 Dynamic arrays: Declared without a specific size.
 uint[] dynamicArray;  // A dynamic array of unsigned integers
+
 dynamicArray.push(1);  // Adds 1 to the array
 dynamicArray.push(2);  // Adds 2 to the array
 
