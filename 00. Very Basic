@@ -41,7 +41,7 @@ Mappings: These are key-value pairs where the key can be of any data type (excep
 Contract types: These refer to other Solidity contracts.
 
 =================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
-State Variables − Variables whose values are permanently stored in a contract storage.
+State Variables − Variables whose values are permanently stored in a contract storage
 Local Variables − Variables whose values are present till function is executing.
 Global Variables − Special variables exists in the global namespace used to get information about the 
 
@@ -117,17 +117,17 @@ contract StructReturnExample {
         return (person.name, person.age);
     }
 =================== 09. Difference among Required, Revert, and Assert? =============================
-require: Use for validating user inputs and conditions that should be met before executing the function logic. It's appropriate for handling expected conditions and user errors.
+Require: Used for validating inputs, conditions, and external calls.
             function transfer(address recipient, uint amount) public { require(balance[msg.sender] >= amount, "Insufficient balance");}
 
-revert: Use for more complex conditional logic and to centralize error handling. It's useful when you need to return custom error messages from within different parts of your function.
+Revert: Can be used for general-purpose error handling.
         if (balance[msg.sender] < amount) {  revert("Insufficient balance"); }
 
-assert: Use to ensure that your code behaves as expected and to catch internal errors. It should only be used for invariants and conditions that should never be false, as it indicates a bug if it fails.
+Assert: Used for internal error checking and assumptions that should never be false in a well-written contract.
 
 =================== 10. Difference between views and pure Function in solidity? =============================
-View function:  indicates that the function does not modify the state, but it can read from the state.
-Pure Functions: A pure function indicates that the function does not read from or modify the state. It can only use the parameters provided to it and perform operations on them.
+VIEW: functions when you need to read data from the contract's storage(State Variables, Modifiers or Gas Consumption) without modifying it (e.g., getting a user's balance).
+PURE: functions for calculations that only rely on the provided inputs and don't interact with the blockchain at all (e.g., mathematical operations or string manipulation).
 
 
 
