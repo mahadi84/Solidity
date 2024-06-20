@@ -34,6 +34,7 @@ address       -These represent a 20-byte Ethereum address.(use to Sending and Re
                 -In Solidity, there are two address types:
                 --address: Used for both user addresses and contract addresses.
                --address payable: Specifically used for addresses that can receive Ether.
+                >>Example:
                   contract HelloGeeks {
                             address public userAddress;
                             address payable public recipientAddress;
@@ -45,17 +46,40 @@ address       -These represent a 20-byte Ethereum address.(use to Sending and Re
                         }
 
 bytes         -Fixed or dynamically sized byte arrays to store raw binary data.
-enum          -user-defined types that consist of a set of named constant values.
-                > Enums (enumerations) allow you to define a set of named constants.
-                > Each constant has an associated integer value (starting from 0 by default).
-                > Example of an enum:
-                > enum Department {
+                1.Fixed-Size Byte Arrays (bytesN):
+                      Fixed-size byte arrays have a specified length, ranging from 1 to 32 bytes.
+                      The notation “bytesN” represents these arrays, where “N” is an integer indicating the length.
+                  >>Example:                      
+                      contract FixedSizeBytesExample {   bytes32 public fixedData; // Fixed-size array with 32 bytes                      
+                          function setFixedData(bytes32 _data) public {   fixedData = _data;  }                      
+                          function getFixedDataLength() public view returns (uint256) { return fixedData.length; }
+                      }                      
+                      ***When you call getFixedDataLength(), it returns the fixed length of the bytes32 array (always 32 bytes).
+                2. Dynamic Byte Arrays:
+                    --Dynamic byte arrays do not have a fixed length and can change during runtime.
+                    --They are simply represented by the “bytes” keyword.
+                  >>Example:                   
+                    contract DynamicBytesExample {
+                        bytes public dynamicData; // Dynamic array                    
+                        function setDynamicData(bytes memory _data) public {  dynamicData = _data; }
+                    }
+
+                ***I can modify the size of dynamicData as needed. 
+                   Remember that dynamic arrays are flexible, while fixed-size arrays provide efficiency when you know the exact data size.
+
+enum(enumerated) -user-defined types that consist of a set of named constant values.
+                >Enums provide names for integral constants, making contracts easier to read and maintain.
+                >Each value in the enumerated list is called an enum.
+                >By default, enums are represented as integers (starting from zero), but you can assign custom values.
+              >>Example:
+                  enum Department {
                     IT,
                     HR,
                     Finance
-                }
+                 }
                 
-     **You can use enums as a way to categorize or label data within your smart contracts. Remember that enums cannot directly serve as keys in mappings
+     **You can use enums as a way to categorize or label data within your smart contracts. 
+       Remember that enums cannot directly serve as keys in mappings
 
 
 REFERENCE TYPES:
