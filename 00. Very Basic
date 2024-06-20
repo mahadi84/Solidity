@@ -18,27 +18,114 @@ Date: 11 June 2024
 
 =================== 01. How many Data Types are there in Solidity? What are the differences among them? =============================
 
-VALUE TYPES:  
-store their data directly in the memory they own.expand_more This means that whenever a value type variable is used in a function argument or assignment, a copy of the variable is created.expand_more There are eight basic value types in Solidity:
+VALUE TYPES:
+------------
+store their data directly in the memory they own. This means that whenever a value type variable is used in a function argument or assignment,
+a copy of the variable is created. There are eight basic value types in Solidity:
 
 int           -Signed integers: These can store both positive and negative whole numbers.(e.g., int8, int256)
                 int256(default) store	32bytes of data and  Range	-2^255 to 2^255-1.
 unit          -Unsigned integers: These can only store non-negative whole numbers(including 0) (e.g., uint8, uint256) .
                -uint256 can hold values between 0 and (2^256 - 1),  which is a very large number (approximately 1.1579 x 10^77 in decimal).
 bool          -These can only be true or false (e.g., 0 or 1).
+
 address       -These represent a 20-byte Ethereum address.(use to Sending and Receiving Ether, Interacting with Other Contracts, Storing Account Information)
                 -Addresses are case-sensitive (e.g., 0xAbCdEf1234567890AbCdEf1234567890 is different from 0xabcdEf1234567890aBcDeF1234567890).
+                -In Solidity, there are two address types:
+                --address: Used for both user addresses and contract addresses.
+               --address payable: Specifically used for addresses that can receive Ether.
+                  contract HelloGeeks {
+                            address public userAddress;
+                            address payable public recipientAddress;
+                        
+                            function setAddress(address _userAddress, address payable _recipientAddress) public {
+                                userAddress = _userAddress;
+                                recipientAddress = _recipientAddress;
+                            }
+                        }
+
 bytes         -Fixed or dynamically sized byte arrays to store raw binary data.
 enum          -user-defined types that consist of a set of named constant values.
+                > Enums (enumerations) allow you to define a set of named constants.
+                > Each constant has an associated integer value (starting from 0 by default).
+                > Example of an enum:
+                > enum Department {
+                    IT,
+                    HR,
+                    Finance
+                }
+                
+     **You can use enums as a way to categorize or label data within your smart contracts. Remember that enums cannot directly serve as keys in mappings
 
 
 REFERENCE TYPES:
-store data in a separate location in memory and use a reference (like a pointer) to access that data. This means that multiple variables can refer to the same data location.expand_more Reference types in Solidity include:
+----------------
+store data in a separate location in memory and use a reference (like a pointer) to access that data. 
+This means that multiple variables can refer to the same data location.expand_more Reference types in Solidity include:
 
 Arrays: These are ordered collections of elements of the same data type.
-Strings: These are similar to byte arrays but represent UTF-8 encoded text.exclamation
-Structs: These are user-defined types that group together variables of different types.
+        Example: can add values to dynamicArray using pushValue() and retrieve them using getValue().
+        contract ArrayExample {
+              uint256[] public dynamicArray; // Dynamic array
+          
+              function pushValue(uint256 value) public {
+                  dynamicArray.push(value); // Append to the array
+              }
+          
+              function getValue(uint256 index) public view returns (uint256) {
+                  return dynamicArray[index];
+              }
+          
+              function getLength() public view returns (uint256) {
+                  return dynamicArray.length;
+              }
+          }
+
+
+Strings:  --Is a sequence of characters encoded in UTF-8.
+          --It can contain any Unicode character and has no fixed size, meaning it can grow dynamically as needed.
+          --I can define a string variable like this: string public myVariable = "Hello World";
+          --I can initialize a string by directly assigning a value or passing it to a function.
+            >>Example:
+              contract StringExample {
+                  string public text;              
+                  constructor() { text = "Hello, Solidity!"; }              
+                  function setText(string memory newText) public { text = newText;}
+              }
+
+Structs: is a user-defined data structure that allows you to group together related variables of different types. 
+         -Think of it as a way to bundle multiple variables into a single unit. Here’s how you can use structs:
+         -Defining a Struct:
+          ------------------
+        - I create a struct by specifying its properties (fields) and their data types.
+                  contract Todos {
+                      struct Todo {
+                          string text;
+                          bool completed;
+                      }
+                  }
+
+                  >>Accessing Struct Properties:
+                    ----------------------------
+                  I can access individual properties of a struct using dot notation.
+                  >>Example:
+                  function get(uint256 _index) public view returns (string memory text, bool completed) {
+                      Todo storage todo = todos[_index];
+                      return (todo.text, todo.completed);
+                  }
+
 Mappings: These are key-value pairs where the key can be of any data type (except for mappings) and the value can be of any data type.
+          >>Example: mapping(keyType => valueType) mappingName;
+           >>Common use cases:
+            Associating data with user addresses (e.g., storing user balances, scores).
+            Implementing voting systems (e.g., tracking votes for each candidate).
+            Representing complex relationships between data points.
+            
+          >>Things to remember:            
+            Mappings are not iterable, meaning you can't loop through them directly like arrays.
+            Accessing a non-existent key returns the default value for the value type (e.g., 0 for numbers, empty string for strings).
+            Mappings are stored permanently on the blockchain unless deleted.
+
 Contract types: These refer to other Solidity contracts.
 
 =================== 02. How many types of Variables are there? Differences/Advantages among State, Local, and Global Varibale? Where data of local variables are stored? =============================
@@ -120,11 +207,11 @@ contract StructReturnExample {
     }
 =================== 09. Difference among Required, Revert, and Assert? =============================
 Require Function: Enforces conditions that must be true for the function to proceed.
-    Behavior:
+  >>Behavior:
     If the condition is true, the function continues execution.
     If the condition is false, the transaction is reverted. This means any state changes made within the function are undone, and the user gets refunded for the gas used up to that point.
     Provides an error message for debugging purposes.
-    Use Cases:
+  >>Use Cases:
     Input validation (e.g., ensuring positive values)
     Enforcing state invariants (e.g., user balance check before transfer)
     Access control checks (e.g., verifying sender address)
