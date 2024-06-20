@@ -254,7 +254,28 @@ Assert: Used for internal error checking and assumptions that should never be fa
 
 =================== 10. Difference between views and pure Function in solidity? =============================
 VIEW: functions when you need to read data from the contract's storage(State Variables, Modifiers or Gas Consumption) without modifying it (e.g., getting a user's balance).
+     -- In this example, getResult() calculates the product and sum of two unsigned integers without modifying any state
+            contract Test {
+          uint num1 = 2;
+          uint num2 = 4;
+      
+          function getResult() public view returns (uint product, uint sum) {
+              product = num1 * num2;
+              sum = num1 + num2;
+          }
+      }
+      
 PURE: functions for calculations that only rely on the provided inputs and don't interact with the blockchain at all (e.g., mathematical operations or string manipulation).
+      --Here, getResult() performs calculations based solely on local variables, making it a pure function
+      contract Test {
+    function getResult() public pure returns (uint product, uint sum) {
+        uint a = 1;
+        uint b = 2;
+        product = a * b;
+        sum = a + b;
+    }
+}
+
 
 
 
