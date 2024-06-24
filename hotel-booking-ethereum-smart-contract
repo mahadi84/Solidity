@@ -1,76 +1,75 @@
-hotel-booking-ethereum-smart-contract
+---------real ethereum smart contract for me for hotel booking in solidity.--------------
 
-//SPDX-License-Identifier: MIT
+Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-pragma solidity 0.8.22;
+contract HotelBooking {
 
-contract Hotel{
-    
-address public hotelOwner;    
-    // declare the state variable - hotelOwner
-    
-uint roomCost = 2 ether;
-    // the cost of a room
+  // Room struct to store room details
+  struct Room {
+    uint roomId; // Unique identifier for the room
+    uint pricePerNight; // Price of the room per night (in Wei)
+    bool available; // Availability status of the room
+  }
 
- //Mappings: These are key-value pairs where the key can be of any data type (except for mappings) and the value can be of any data type.  
- mapping (address => uint) balancex;
+  // Mapping to store rooms with roomId as key
+  mapping(uint => Room) public rooms;
 
-//enum-user-defined types that consist of a set of named constant values.
-    enum RoomStatus {
-        Vacant,
-        Occupied
-    }
-    RoomStatus public status;
+  // Address of the hotel owner who receives payments
+  address payable public owner;
 
-    constructor() { 
-        hotelOwner = msg.sender;  
-        // the sender of the FIRST transaction is deemed as the HotelOwner      
-    }
+  // Event to be emitted after a successful booking
+  event BookingConfirmed(uint roomId, address guest, uint checkIn, uint checkOut);
 
-    event Occupy (address occupant, uint value);
-    // create an event which will be emitted after every success transaction
+  constructor() public {
+    owner = payable(msg.sender); // Set contract deployer as owner
+  }
 
-   
- receive() external payable {
-        require (status == RoomStatus.Vacant, "Room is Occupied. Contact Reception!");
-        // ensure status is vacant    
+  // Function to add a new room
+  function addRoom(uint roomId, uint pricePerNight) public onlyOwner {
+    rooms[roomId] = Room(roomId, pricePerNight, true);
+  }
 
-require (msg.value==roomCost, "Invalid Amount!");
-         // ensure amount paid is equal to the roomCost ie. 2 ether    
-        
-payable(hotelOwner).transfer (msg.value);
-        // transfer the funds to the hotel owner
+  // Function to book a room
+  function bookRoom(uint roomId, uint checkIn, uint checkOut) public payable {
+    Room storage room = rooms[roomId];
+    require(room.available, "Room is not available");
+    require(msg.value >= room.pricePerNight * (checkOut - checkIn), "Insufficient payment");
 
-status = RoomStatus.Occupied;
-        // change the room status to OCCUPIED
+    room.available = false;
+    owner.transfer(msg.value); // Transfer payment to owner
 
-emit Occupy (msg.sender, msg.value);
-        // emit the event - show the address of the customer and the amount sent
+    emit BookingConfirmed(roomId, msg.sender, checkIn, checkOut);
+  }
 
-balancex [hotelOwner] += msg.value;
-        // update the balance of the hotel owner
-    }
-
-    function checkBalance() public view returns (uint) {
-        require (msg.sender==hotelOwner, "You are not authorized to perform this action!");
-        // this ensures that this function is exclusive to the Hotel Owner
-      
- uint x=balancex[hotelOwner];
-        return x;
-        // asssigns the current balance to the variable 'x' and return it
-    }
-
-    function changeStatus() public {
-        require (msg.sender==hotelOwner, "You are not authorized to perform this action!");
-        // ensures that the hotel owner is the only one who can do this
-
-        if (status == RoomStatus.Occupied) {
-            status = RoomStatus.Vacant;
-        }
-        else {
-            status = RoomStatus.Occupied;
-        }
-        // the hotel owner can change the status if a room IF and WHEN (s)he wants
-    }
-    
+  // Modifier to restrict functions only for the owner
+  modifier onlyOwner() {
+    require(msg.sender == owner, "Only owner can call this function");
+    _;
+  }
 }
+
+================================================
+
+This contract defines a Room struct to store room details (ID, price, availability).
+It uses a mapping to store rooms with the room ID as the key.
+The owner variable stores the address of the hotel owner who receives booking payments.
+An BookingConfirmed event is emitted after a successful booking.
+The addRoom function allows the owner to add new rooms with a unique ID and price.
+The bookRoom function lets users book a room by providing the ID, check-in, and check-out dates. It checks room availability and validates sufficient payment before booking.
+The onlyOwner modifier restricts specific functions (like adding rooms) to the contract owner.
+Important Note:
+
+This is a simplified example for educational purposes. A real-world hotel booking system would likely include additional features like:
+
+User accounts and authentication
+Cancellation policy and refunds
+Different room types and amenities
+Integration with a user interface (web or mobile app)
+
+
+
+
+
+-
