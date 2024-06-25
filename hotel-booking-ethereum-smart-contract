@@ -1,24 +1,24 @@
 
-Scenario:Imagine a decentralized hotel booking platform where users can search for available rooms and book them securely using cryptocurrency.
 
+
+
+Decentralized hotel booking platform where users can search for available rooms and book them securely using cryptocurrency.
 
 We can use several mappings to store different types of data:
 
 Hotel Information (mapping(address => Hotel))
-
 Key: Hotel contract address (unique identifier for each hotel)
 Value: A custom Hotel struct containing details like hotel name, location, amenities, etc.
-Room Availability (mapping(address => mapping(uint => bool)))
 
+Room Availability (mapping(address => mapping(uint => bool)))
 Key1: Hotel contract address (same as above)
 Key2: Room ID (unique identifier for each room type)
 Value: Boolean value indicating room availability (true for available, false for booked)
-Bookings (mapping(address => mapping(uint => Booking)))
 
+Bookings (mapping(address => mapping(uint => Booking)))
 Key1: User address (who made the booking)
 Key2: Booking ID (unique identifier for each booking)
 Value: A custom Booking struct containing details like room ID, check-in/out dates, price paid, etc.
-Code Example (Simplified):
 
 ------------------ CODE -----------------------
 pragma solidity ^0.8.0;
@@ -60,12 +60,13 @@ contract HotelBooking {
     }
 }
 
-
 ----------------------------- Explanation :------------------------------------
 
 This is a simplified example focusing on mappings. A complete booking system would involve additional functionalities like handling payments securely and implementing access control.
+
 The code defines three mappings for hotels, room availability, and bookings.
 Each mapping uses key-value pairs to store relevant data.
+
 Functions like addHotel and bookRoom demonstrate how to interact with the mappings to manage hotel information and bookings.
 
 ----------------------Benefits of using Mappings:------------------------------
@@ -79,3 +80,9 @@ Scalability: The system can handle a large number of hotels and bookings.
 Storing complex data structures within mappings can become expensive.
 Modifying existing data within mappings can be complex.
 Overall, mappings are a powerful tool for building efficient and scalable decentralized applications like hotel booking systems on the blockchain.
+
+
+
+
+
+-
