@@ -1,5 +1,5 @@
 
-Functionality: This contract tracks the current location of items in a supply chain Management.
+This contract tracks the current location of items in a supply chain Management.
 
 ---------------- : CODE : -----------------------
 
@@ -14,7 +14,7 @@ contract SupplyChain {
   mapping(uint256 => Location) public productLocations;
 
   // Function to update the location of a product
-  function updateLocation(uint256 productId, Location newLocation) public {
+ function updateLocation(uint256 productId, Location newLocation) public {
     productLocations[productId] = newLocation;
   }
 
@@ -32,7 +32,12 @@ updateLocation Function:---- This function allows updating the location of a pro
 It modifies the productLocations mapping for that specific product ID.
 getLocation Function:---- This function retrieves the current location of a product given its ID. It accesses the productLocations mapping using the product ID as the key and returns the corresponding location value.
 
+
+
 Real-world Significance:
-In a real supply chain scenario, each product might have a unique ID. This contract allows tracking the movement of products by updating their locations 
-(e.g., from Origin to Warehouse) throughout the supply chain. 
+In a real supply chain scenario, each product might have a unique ID. This contract allows tracking the movement of products by updating their locations (e.g., from Origin to Warehouse) throughout the supply chain. 
 This data stored on the blockchain provides transparency and immutability, ensuring everyone involved can verify the product's location at any given time.
+
+
+
+-
