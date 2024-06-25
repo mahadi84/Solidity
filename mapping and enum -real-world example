@@ -1,0 +1,38 @@
+Here's a real-world example of using mappings in Solidity code, along with some explanations:
+
+Scenario:  A simple Supply Chain Management contract
+Functionality: This contract tracks the current location of items in a supply chain.
+
+pragma solidity ^0.8.0;
+
+contract SupplyChain {
+
+  // Define an enum to represent different locations
+  enum Location { Origin, Warehouse, InTransit, Delivered }
+
+  // Mapping to store product ID (key) and its current location (value)
+  mapping(uint256 => Location) public productLocations;
+
+  // Function to update the location of a product
+  function updateLocation(uint256 productId, Location newLocation) public {
+    productLocations[productId] = newLocation;
+  }
+
+  // Function to retrieve the current location of a product
+  function getLocation(uint256 productId) public view returns (Location) {
+    return productLocations[productId];
+  }
+}
+
+------------Explanation:-------------
+Location Enum:------ This defines possible locations (Origin, Warehouse, etc.) for products.
+productLocations Mapping:------ This mapping associates a product ID (represented by uint256) with its current location (Location enum). 
+Think of it as a key-value store,where the product ID acts as the unique key to find its corresponding location value.
+updateLocation Function:---- This function allows updating the location of a product by taking the product ID and the new location as arguments. 
+It modifies the productLocations mapping for that specific product ID.
+getLocation Function:---- This function retrieves the current location of a product given its ID. It accesses the productLocations mapping using the product ID as the key and returns the corresponding location value.
+
+Real-world Significance:
+In a real supply chain scenario, each product might have a unique ID. This contract allows tracking the movement of products by updating their locations 
+(e.g., from Origin to Warehouse) throughout the supply chain. 
+This data stored on the blockchain provides transparency and immutability, ensuring everyone involved can verify the product's location at any given time.
