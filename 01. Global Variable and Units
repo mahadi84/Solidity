@@ -1,6 +1,80 @@
+
+তারিখ: ৯ জুন ২০২৪
+
+-----
+গ্যাস (Gas): ইথেরিয়াম ব্লকচেইন প্ল্যাটফর্মে একটি লেনদেন সফলভাবে সম্পন্ন করতে বা একটি চুক্তি কার্যকর করতে যে ফি (খরচ) প্রয়োজন।
+
+### গ্লোবাল ভেরিয়েবল (GLOBAL VARIABLE)
+
+  * নির্দিষ্ট ব্লকের হ্যাশ (সর্বশেষ ২৫৬টি ব্লক, বর্তমান ব্লক বাদে): `blockhash(uint blockNumber) returns (bytes32)`
+  * বর্তমান ব্লকের মাইনারের ঠিকানা: `block.coinbase (address payable)`
+  * বর্তমান ব্লকের অসুবিধা (difficulty): `block.difficulty (uint)`
+  * বর্তমান ব্লকের গ্যাসলিমিট: `block.gaslimit (uint)`
+  * বর্তমান ব্লকের নম্বর: `block.number (uint)`
+  * ইউনিক্স ইপক থেকে সেকেন্ড হিসাবে বর্তমান ব্লকের টাইমস্ট্যাম্প: `block.timestamp (uint)`
+  * অবশিষ্ট গ্যাস: `gasleft() returns (uint256)`
+  * সম্পূর্ণ কলডেটা: `msg.data (bytes calldata)`
+  * বার্তার প্রেরক (বর্তমান কলার): `msg.sender (address payable)`
+  * কলডেটার প্রথম চারটি বাইট (ফাংশন আইডেন্টিফায়ার): `msg.sig (bytes4)`
+  * বার্তার সাথে পাঠানো ওয়েই (wei) এর সংখ্যা: `msg.value (uint)`
+  * বর্তমান ব্লকের টাইমস্ট্যাম্প: `now (uint)`
+  * লেনদেনের গ্যাস প্রাইস: `tx.gasprice (uint)`
+  * লেনদেনের প্রেরক: `tx.origin (address payable)`
+
+-----
+
+উদাহরণ:
+pragma solidity ^0.5.0;
+contract LedgerBalance {
+    mapping(address => uint) public balances; // ঠিকানা থেকে uint-এর ম্যাপিং, যা পাবলিক
+
+    function updateBalance(uint newBalance) public {
+        balances[msg.sender] = newBalance; // msg.sender-এর ব্যালেন্স নতুন ব্যালেন্স দিয়ে আপডেট করুন
+    }
+}
+
+contract Updater {
+    function updateBalance() public returns (uint) {
+        LedgerBalance ledgerBalance = new LedgerBalance(); // একটি নতুন LedgerBalance চুক্তি স্থাপন করুন
+        ledgerBalance.updateBalance(10); // LedgerBalance চুক্তিতে 10 দিয়ে ব্যালেন্স আপডেট করুন
+        return ledgerBalance.balances(address(this)); // এই চুক্তির ঠিকানা দিয়ে LedgerBalance থেকে ব্যালেন্স ফেরত দিন
+    }
+}
+```
+
+-----
+
+### ইউনিট (UNITS)
+
+সলিডিটিতে আমরা বিভিন্ন ইথার-ভিত্তিক মূল্যমানের রূপান্তরের জন্য একটি আক্ষরিকের প্রত্যয় (suffix) হিসাবে `wei`, `finney`, `szabo` বা `ether` ব্যবহার করতে পারি। 
+সর্বনিম্ন একক হলো ওয়েই (wei) এবং `1e12` বলতে $1 \\times 10^{12}$ বোঝায়।
+
+  * `assert(1 wei == 1);`
+  * `assert(1 szabo == 1e12);`
+  * `assert(1 finney == 1e15);`
+  * `assert(1 ether == 1e18);`
+  * `assert(2 ether == 2000 finney);`
+
+-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Date: 9 June 2024
-
-
 ================================== GLOBAL VERIABLE =========================================
 **Gas = fee (required for successfully conducting a transaction or executing a contract on the Ethereum blockchain platform).
 
